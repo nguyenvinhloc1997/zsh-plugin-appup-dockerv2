@@ -35,6 +35,34 @@ supplied to vagrant.
 | stop    | [halt](https://www.vagrantup.com/docs/cli/halt.html)       | [stop](https://docs.docker.com/compose/reference/stop/)       |
 | enter   |                                                            | [exec](https://docs.docker.com/compose/reference/exec/) /bin/bash -l (or custom command/shell, e.g. with `enter /bin/sh`)      |
 
+## Migrating from Original Plugin
+
+If you have the original appup plugin installed, follow these steps to migrate to this fork:
+
+### oh-my-zsh users
+1. Remove the existing plugin directory:
+   ```bash
+   rm -rf "$ZSH_CUSTOM/plugins/appup"
+   ```
+
+2. Install this fork (see Installation section below)
+
+3. Restart your terminal or run:
+   ```bash
+   source ~/.zshrc
+   ```
+
+### Plain ZSH users
+1. Remove the source line from your `~/.zshrc` that points to the old plugin
+2. Delete the old plugin directory (wherever you cloned it)
+3. Follow the Plain ZSH installation steps below
+4. Restart your terminal or run:
+   ```bash
+   source ~/.zshrc
+   ```
+
+Note: Your existing configuration options in `~/.zshrc` (like `APPUP_CHECK_STARTED`, `APPUP_DOCKER_MACHINE`, etc.) will continue to work with this fork.
+
 ## Installation
 
 ### oh-my-zsh
