@@ -13,9 +13,9 @@ or `docker-compose` (V1) or `vagrant` every time or aliasing them. Also gives yo
 ### Docker
 
 The plugin supports both Docker Compose V2 (`docker compose`) and V1 (`docker-compose`), defaulting to V2 when available. 
-Aside from simply running `up`, you can also extend your configuration by running `up <name>`, which will
-run Docker Compose with both `docker-compose.yml` and extend it with `docker-compose.<name>.yml`. For more on
-extending please see the [official docker documentation](https://docs.docker.com/compose/extends). Additional arguments
+By default, running `up <name>` will use only the environment-specific compose file (e.g., `up dev` uses `docker-compose.dev.yml`). 
+If you want to extend your configuration, set `APPUP_MERGE_COMPOSE=true` and running `up <name>` will use both `docker-compose.yml` and `docker-compose.<name>.yml`. 
+For more on extending please see the [official docker documentation](https://docs.docker.com/compose/extends). Additional arguments
 will be directly supplied to Docker Compose.
 
 ### Vagrant
