@@ -29,7 +29,10 @@ supplied to vagrant.
 | Command | Vagrant command                                            | Docker command                                                |
 |---------|------------------------------------------------------------|---------------------------------------------------------------|
 | up      | [up](https://www.vagrantup.com/docs/cli/up.html)           | [up](https://docs.docker.com/compose/reference/up/)           |
+| upd     |                                                            | [up -d](https://docs.docker.com/compose/reference/up/) (detached mode) |
+| upbd    |                                                            | [up --build -d](https://docs.docker.com/compose/reference/up/) (build and run detached) |
 | down    | [destroy](https://www.vagrantup.com/docs/cli/destroy.html) | [down](https://docs.docker.com/compose/reference/down/)       |
+| downv   |                                                            | [down -v](https://docs.docker.com/compose/reference/down/) (remove volumes) |
 | start   | [up](https://www.vagrantup.com/docs/cli/up.html)           | [start](https://docs.docker.com/compose/reference/start/)     |
 | restart | [reload](https://www.vagrantup.com/docs/cli/reload.html)   | [restart](https://docs.docker.com/compose/reference/restart/) |
 | stop    | [halt](https://www.vagrantup.com/docs/cli/halt.html)       | [stop](https://docs.docker.com/compose/reference/stop/)       |
