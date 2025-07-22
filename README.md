@@ -101,5 +101,6 @@ Currently these options only affect docker.
 | APPUP_CHECK_STARTED    | true/false | true    | Enable/disable checking if docker is running completely.                                                                                          |
 | APPUP_DOCKER_MACHINE   | true/false | true    | If both docker (e.g. Docker Desktop) and docker-machine are installed, check if docker-machine (when `true`) or docker (when `false`) is running. |
 | APPUP_LOAD_ENVS        | true/false | true    | When true, load .env, .env.local, .env.docker and .env.docker.local if they exist with `docker compose --env-file`.                             |
-| APPUP_PREFER_COMPOSE_V2| true/false | true    | When true, prefer Docker Compose V2 (`docker compose`) over V1 (`docker-compose`) when both are available.                                       | 
+| APPUP_PREFER_COMPOSE_V2| true/false | true    | When true, prefer Docker Compose V2 (`docker compose`) over V1 (`docker-compose`) when both are available.                                       |
+| APPUP_MERGE_COMPOSE    | true/false | false   | When true, merges base compose file with environment-specific file (e.g., `up dev` uses both `docker-compose.yml` and `docker-compose.dev.yml`). When false, uses only the environment-specific file if provided. | 
 

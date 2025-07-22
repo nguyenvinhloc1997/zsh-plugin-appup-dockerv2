@@ -105,6 +105,11 @@ _appup_docker () {
         if [ -n "$compose_project_file" ]; then
             # Project specific env file
             if [ "${APPUP_LOAD_ENVS:-true}" = true ]; then
+                # Clear previous env files if not merging
+                if [ "${APPUP_MERGE_COMPOSE:-false}" = false ]; then
+                    env_files=()
+                fi
+                
                 if [ -e ".env.$2" ]; then
                     env_files+=( ".env.$2" )
                 fi
@@ -115,16 +120,24 @@ _appup_docker () {
 
             # Run docker compose
             if [ "$use_v2" = true ]; then
-                docker compose -f "$compose_file" -f "$compose_project_file" --env-file=$^env_files $1 "${@:3}"
+                if [ "${APPUP_MERGE_COMPOSE:-false}" = true ]; then
+                    docker compose -f "$compose_file" -f "$compose_project_file" --env-file=$^env_files $1 "${@:3}"
+                else
+                    docker compose -f "$compose_project_file" --env-file=$^env_files $1 "${@:3}"
+                fi
             else
-                docker-compose -f "$compose_file" -f "$compose_project_file" --env-file=$^env_files $1 "${@:3}"
+                if [ "${APPUP_MERGE_COMPOSE:-false}" = true ]; then
+                    docker-compose -f "$compose_file" -f "$compose_project_file" --env-file=$^env_files $1 "${@:3}"
+                else
+                    docker-compose -f "$compose_project_file" --env-file=$^env_files $1 "${@:3}"
+                fi
             fi
 
             return
         fi
     fi
 
-    # Run docker compose
+    # Run docker compose with base file
     if [ "$use_v2" = true ]; then
         docker compose --env-file=$^env_files $1 "${@:2}"
     else
