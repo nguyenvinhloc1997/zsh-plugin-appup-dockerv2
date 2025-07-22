@@ -2,18 +2,21 @@
 
 > The command that can save you typing 15 characters or more, each time!
 
-[![CircleCI](https://circleci.com/gh/Cloudstek/zsh-plugin-appup.svg?style=svg)](https://circleci.com/gh/Cloudstek/zsh-plugin-appup)
+This is a fork of [Cloudstek/zsh-plugin-appup](https://github.com/Cloudstek/zsh-plugin-appup) with added support for Docker Compose V2.
 
-This plugins adds `start`, `restart`, `stop`, `up` and `down` commands when it detects a docker-compose or Vagrant file
-in the current directory (e.g. your application). Just run `up` and get coding! This saves you typing `docker-compose`
-or `vagrant` every time or aliasing them. Also gives you one set of commands that work for both environments.
+[![CircleCI](https://circleci.com/gh/nguyenvinhloc1997/zsh-plugin-appup-dockerv2.svg?style=svg)](https://circleci.com/gh/nguyenvinhloc1997/zsh-plugin-appup-dockerv2)
+
+This plugin adds `start`, `restart`, `stop`, `up` and `down` commands when it detects a docker-compose or Vagrant file
+in the current directory (e.g. your application). Just run `up` and get coding! This saves you typing `docker compose` (V2)
+or `docker-compose` (V1) or `vagrant` every time or aliasing them. Also gives you one set of commands that work for both environments.
 
 ### Docker
 
+The plugin supports both Docker Compose V2 (`docker compose`) and V1 (`docker-compose`), defaulting to V2 when available. 
 Aside from simply running `up`, you can also extend your configuration by running `up <name>`, which will
-run `docker-compose` with both `docker-compose.yml` and extend it with `docker-compose.<name>.yml`. For more on
+run Docker Compose with both `docker-compose.yml` and extend it with `docker-compose.<name>.yml`. For more on
 extending please see the [official docker documentation](https://docs.docker.com/compose/extends). Additional arguments
-will be directly supplied to the docker-compose.
+will be directly supplied to Docker Compose.
 
 ### Vagrant
 
@@ -39,7 +42,7 @@ supplied to vagrant.
 1. Clone this repository in `$ZSH_CUSTOM/plugins/appup`:
 
    ```bash
-   git clone https://github.com/Cloudstek/zsh-plugin-appup.git "$ZSH_CUSTOM/plugins/appup"
+   git clone https://github.com/nguyenvinhloc1997/zsh-plugin-appup-dockerv2.git "$ZSH_CUSTOM/plugins/appup"
    ```
 2. Edit `~/.zshrc` and add `appup` to the list of plugins
 
