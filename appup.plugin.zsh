@@ -168,7 +168,11 @@ up () {
 # Up detached mode
 upd () {
     if [ -e "docker-compose.yml" ] || [ -e "docker-compose.yaml" ]; then
-        _appup_docker up -d "$@"
+        if [ -n "$1" ]; then
+            _appup_docker up "$1" -d "${@:2}"
+        else
+            _appup_docker up -d
+        fi
     elif hash upd >/dev/null 2>&1; then
         env upd "$@"
     fi
@@ -177,7 +181,11 @@ upd () {
 # Up build and detached mode
 upbd () {
     if [ -e "docker-compose.yml" ] || [ -e "docker-compose.yaml" ]; then
-        _appup_docker up --build -d "$@"
+        if [ -n "$1" ]; then
+            _appup_docker up "$1" --build -d "${@:2}"
+        else
+            _appup_docker up --build -d
+        fi
     elif hash upbd >/dev/null 2>&1; then
         env upbd "$@"
     fi
@@ -196,7 +204,11 @@ down () {
 # Down with volumes
 downv () {
     if [ -e "docker-compose.yml" ] || [ -e "docker-compose.yaml" ]; then
-        _appup_docker down -v "$@"
+        if [ -n "$1" ]; then
+            _appup_docker down "$1" -v "${@:2}"
+        else
+            _appup_docker down -v
+        fi
     elif hash downv >/dev/null 2>&1; then
         env downv "$@"
     fi
